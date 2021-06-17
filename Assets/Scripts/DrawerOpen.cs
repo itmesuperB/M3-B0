@@ -6,6 +6,7 @@ public class DrawerOpen : MonoBehaviour
 {
     private Animator _animator;
     public GameObject OpenPanel = null;
+    private bool nextToDrawer = false;
 
     void Start()
     {
@@ -16,16 +17,25 @@ public class DrawerOpen : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            OpenPanel.SetActive(true);
+            nextToDrawer = true;
+            // only show the 'E' overlay  if drawer is closed
+            if(_animator.GetBool("open"))
+            {
+                OpenPanel.SetActive(false);    
+            } 
+            else
+            {
+                OpenPanel.SetActive(true);
+            }
         }
-        
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
-            _animator.SetBool("open", false);
+            nextToDrawer = false;
+            // _animator.SetBool("open", false);
             OpenPanel.SetActive(false);
         }
     }
@@ -40,12 +50,18 @@ public class DrawerOpen : MonoBehaviour
     
     void Update()
     {
-        if(IsOpenPanelActive)
+        if(nextToDrawer)
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
                 OpenPanel.SetActive(false);
-                _animator.SetBool("open", true);
+                if(_animator.GetBool("open")){
+                    _animator.SetBool("open", false);
+                }
+                else{
+                    _animator.SetBool("open", true);
+                }
+                
             }
         }
     }
