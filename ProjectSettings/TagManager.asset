@@ -8,6 +8,7 @@ TagManager:
   - Batteries
   - Note
   - Photo
+  - Walker
   layers:
   - Default
   - TransparentFX

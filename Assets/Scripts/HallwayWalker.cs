@@ -9,7 +9,6 @@ public class HallwayWalker : MonoBehaviour
     [SerializeField] float period = 10f;
     float movementFactor;
     private int itemsInBackpack;
-    public bool doorEnabled = false;
     
     
     void Start()
@@ -36,7 +35,8 @@ public class HallwayWalker : MonoBehaviour
         if(itemsInBackpack == 3)
         {
             StartWalk();
-            doorEnabled = true;
         }
     }
+
+    
 }

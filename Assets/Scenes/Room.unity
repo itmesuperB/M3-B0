@@ -725,6 +725,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145282911}
   m_CullTransparentMesh: 1
+--- !u!1 &165155448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 165155451}
+  - component: {fileID: 165155450}
+  - component: {fileID: 165155449}
+  m_Layer: 0
+  m_Name: HallwayCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &165155449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165155448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 979822315681aad419df4628227b2316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorEnabled: 0
+--- !u!65 &165155450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165155448}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.347477, y: 1, z: 2.7973409}
+  m_Center: {x: 0.004360676, y: 0, z: -0.19346261}
+--- !u!4 &165155451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165155448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.03, y: 0.44, z: -6.52}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &169660883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4893,9 +4951,10 @@ GameObject:
   - component: {fileID: 1762607624}
   - component: {fileID: 1762607623}
   - component: {fileID: 1762607627}
+  - component: {fileID: 1762607628}
   m_Layer: 0
   m_Name: Hallway person
-  m_TagString: Untagged
+  m_TagString: Walker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4932,7 +4991,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e90179331d9473b489259222304d3b1a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4970,7 +5029,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762607622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.26, y: 1.68, z: -6.35}
+  m_LocalPosition: {x: -6, y: 1.82, z: -6.35}
   m_LocalScale: {x: 1, y: 3.676956, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4988,9 +5047,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43458f5d6246c6e449ad1c2c1f3a4402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 10, y: 0, z: 0}
-  period: 10
-  doorEnabled: 0
+  movementVector: {x: 15, y: 0, z: 0}
+  period: 20
+--- !u!54 &1762607628
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762607622}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1765923742
 GameObject:
   m_ObjectHideFlags: 0
