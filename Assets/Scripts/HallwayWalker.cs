@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Oscillation : MonoBehaviour
+public class HallwayWalker : MonoBehaviour
 {
     Vector3 startingPos;
     [SerializeField] Vector3 movementVector;
+    [SerializeField] float period = 10f;
     float movementFactor;
-    [SerializeField] float period = 5f;
+    private int itemsInBackpack;
+    public bool doorEnabled = false;
+    
     
     void Start()
     {
         startingPos = transform.position;
     }
-    void FixedUpdate()
+    void StartWalk()
     {
         if (period <= Mathf.Epsilon) {return;} // protect against NAN errors
         float cycles = Time.time / period; // continually growing over time
@@ -25,5 +28,15 @@ public class Oscillation : MonoBehaviour
 
         Vector3 offset = movementVector * movementFactor;
         transform.position = startingPos + offset;
+    }
+
+    void Update() {
+        itemsInBackpack = GameObject.Find("Backpack").GetComponent<CountObjects>().objectsInBackpack;
+
+        if(itemsInBackpack == 3)
+        {
+            StartWalk();
+            doorEnabled = true;
+        }
     }
 }
