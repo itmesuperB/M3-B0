@@ -9,6 +9,7 @@ public class HallwayWalker : MonoBehaviour
     [SerializeField] float period = 10f;
     float movementFactor;
     private int itemsInBackpack;
+    private bool doorIsOpen = false;
     
     
     void Start()
@@ -29,13 +30,24 @@ public class HallwayWalker : MonoBehaviour
         transform.position = startingPos + offset;
     }
 
+    void StopWalk()
+    {
+        Destroy(GetComponent<HallwayWalker>());
+    }
+
     void Update() {
         itemsInBackpack = GameObject.Find("Backpack").GetComponent<CountObjects>().objectsInBackpack;
+        doorIsOpen = GameObject.Find("HallwayCheck").GetComponent<CheckHallway>().meowHeard;
 
         if(itemsInBackpack == 3)
         {
             StartWalk();
+            if(doorIsOpen)
+            {
+                StopWalk();
+            }
         }
+        
     }
 
     

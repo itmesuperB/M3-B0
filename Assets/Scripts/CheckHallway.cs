@@ -20,17 +20,15 @@ public class CheckHallway : MonoBehaviour
         // check cat is near door
         if(other.tag == "Player")
         {
-            if(doorEnabled)
+            if(doorEnabled && Input.GetKeyDown(KeyCode.M))
             {
-                if(Input.GetKeyDown(KeyCode.M))
-                {
-                    // meow heard
-                    meowHeard = true;
-                    // stop guy from walking
-                    // play door open animation
-                    // start endgame credit
-                    Debug.Log("YOU DID IT");
-                }
+                // meow heard
+                meowHeard = true;
+                // stop guy from walking
+                // play door open animation
+                // start endgame credit
+                Debug.Log("YOU DID IT");
+                
             }
         }
     }

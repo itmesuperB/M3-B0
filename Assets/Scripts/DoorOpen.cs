@@ -15,7 +15,6 @@ public class DoorOpen : MonoBehaviour
     void Update()
     {
         meowHeard = GameObject.Find("HallwayCheck").GetComponent<CheckHallway>().meowHeard;
-        Debug.Log("animator: " + _animator.GetBool("open"));
         if(meowHeard)
         {
             _animator.SetBool("open", true);
