@@ -5,8 +5,10 @@ using UnityEngine;
 public class DrawerOpen : MonoBehaviour
 {
     private Animator _animator;
-    public GameObject OpenPanel = null;
+    [SerializeField] public GameObject OpenPanel = null;
+    [SerializeField] public GameObject BackpackPanel = null;
     private bool nextToDrawer = false;
+    public bool hasBackpack = false;
 
     void Start()
     {
@@ -55,14 +57,30 @@ public class DrawerOpen : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 OpenPanel.SetActive(false);
+                if(!hasBackpack)
+                {
+                    StartCoroutine(GetBackpack()); // need coroutine to use WaitForSeconds()
+                    // TODO: add backpack noise
+                    // TODO: add playerwearingbackpack functionality
+                    hasBackpack = true;
+                }
+                
                 if(_animator.GetBool("open")){
                     _animator.SetBool("open", false);
                 }
                 else{
                     _animator.SetBool("open", true);
                 }
-                
             }
         }
+    }
+
+    IEnumerator GetBackpack()
+    {
+        // show backpack collected message for 3 seconds
+        yield return new WaitForSeconds(1);
+        BackpackPanel.SetActive(true);
+        yield return new WaitForSeconds(3);
+        BackpackPanel.SetActive(false);
     }
 }
