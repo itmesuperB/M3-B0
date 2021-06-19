@@ -15,6 +15,13 @@ public class CheckHallway : MonoBehaviour
             doorEnabled = true;
         }       
     }
+    void OnTriggerExit(Collider other) 
+    {
+        if(other.tag == "Walker")
+        {
+            doorEnabled = false;
+        }
+    }
 
     void OnTriggerStay(Collider other) {
         // check cat is near door
@@ -24,8 +31,8 @@ public class CheckHallway : MonoBehaviour
             {
                 // meow heard
                 meowHeard = true;
-                // stop guy from walking
-                // play door open animation
+                // doorOpen script runs
+                // Hallwaywalker script triggers to stop the walking
                 // start endgame credit
                 Debug.Log("YOU DID IT");
                 
@@ -33,11 +40,5 @@ public class CheckHallway : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other) 
-    {
-        if(other.tag == "Walker")
-        {
-            doorEnabled = false;
-        }
-    }
+    
 }

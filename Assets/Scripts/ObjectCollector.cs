@@ -45,6 +45,7 @@ public class ObjectCollector : MonoBehaviour
     {
         // hide ineteract panel
         ObjectInteractPanel.SetActive(false);
+        
         // hide the batteries object
         myRenderer.enabled = false;
         foreach(BoxCollider bc in myColliders) bc.enabled = false;
